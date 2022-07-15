@@ -54,7 +54,6 @@ function encodeUnsignedLeb128FromUInt64(value: u64): Array<u8> {
 function winner(): void {
   const state = State.load() as State
 
-  //const winner = (Math.random() * state.participants.length) as u32
   const random = 0
   const winner: u64 = state.participants[0]
 
@@ -73,7 +72,7 @@ function winner(): void {
   const res = send(recipient, 0, params, amount.hi, amount.lo)
 
   if (res.exit_code != 0) {
-    genericAbort(res.exit_code, "Fail to sen reward to actor")
+    genericAbort(res.exit_code, "Fail to send reward to actor")
   }
 
   return
