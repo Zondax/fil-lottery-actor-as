@@ -8,7 +8,7 @@ build:
 	rm build/release.wasm build/release.wat
 
 test:
-	cd testing && cargo r
+	cd testing/fvm && cargo r
 
 test-rpc: build
 	yarn tests:rpc
