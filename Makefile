@@ -1,6 +1,6 @@
 deps:
 	yarn install
-	cargo install wizer --all-features
+	cargo install --force wizer --all-features
 
 build:
 	yarn asbuild
