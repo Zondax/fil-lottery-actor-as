@@ -156,7 +156,7 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('./tests/local-vm/Cargo.lock') }}
       - name: Test WASM on Rust VM
         run: |
-          cd tests/local-vm
+          cd testing/fvm
           rustup target add wasm32-unknown-unknown
           RUST_BACKTRACE=1 cargo r
       - name: Save crates
