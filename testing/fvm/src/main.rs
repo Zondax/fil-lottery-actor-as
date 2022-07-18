@@ -13,7 +13,7 @@ use fvm::machine::Machine;
 use fvm_ipld_blockstore::Blockstore;
 
 const WASM_COMPILED_PATH: &str =
-    "../../fil-lottery-actor.wasm";
+    "../../build/fil-lottery-actor.wasm";
 
 // The state object
 #[derive(Serialize_tuple, Deserialize_tuple, Clone, Debug, Default)]
