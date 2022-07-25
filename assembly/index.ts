@@ -1,5 +1,5 @@
 // @chainfile-index
-import { caller, genericAbort, valueReceived, send } from "@zondax/fvm-as-sdk/assembly/wrappers"
+import { caller, genericAbort, valueReceived, send, getBeaconRandomness, currentEpoch } from "@zondax/fvm-as-sdk/assembly/wrappers"
 import { USR_UNHANDLED_MESSAGE } from "@zondax/fvm-as-sdk/assembly/env"
 import { u128 } from "as-bignum/assembly"
 import { State } from "./state"
@@ -54,8 +54,12 @@ function encodeUnsignedLeb128FromUInt64(value: u64): Array<u8> {
 function winner(): void {
   const state = State.load() as State
 
-  const random = 0
-  const winner: u64 = state.participants[0]
+  // get randomness
+  const epoch = currentEpoch()
+  const randomness = getBeaconRandomness(0, epoch, new Uint8Array(0))
+  const random = randomness[0] % state.participants.length
+  
+  const winner: u64 = state.participants[random]
 
   // send all the money to winner
 
