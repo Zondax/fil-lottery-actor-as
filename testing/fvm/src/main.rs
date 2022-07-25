@@ -1,4 +1,5 @@
 use fvm_integration_tests::tester::{Account, Tester};
+use fvm_integration_tests::dummy::DummyExterns;
 use fvm_shared::message::Message;
 use fvm_shared::state::StateTreeVersion;
 use fvm_shared::version::NetworkVersion;
@@ -57,7 +58,7 @@ fn main() {
     println!("Cbor hex state : {}", hex::encode(state.unwrap()));
 
     // Instantiate machine
-    tester.instantiate_machine().unwrap();
+    tester.instantiate_machine(DummyExterns).unwrap();
 
     let executor = tester.executor.as_mut().unwrap();
 

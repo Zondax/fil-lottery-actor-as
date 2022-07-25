@@ -56,10 +56,11 @@ function winner(): void {
 
   // get randomness
   const epoch = currentEpoch()
-//  const randomness = getBeaconRandomness(0, epoch, new Uint8Array(0))
-//  const random = randomness[0] % state.participants.length
+  const randomness = getBeaconRandomness(0, epoch, new Uint8Array(0))
+  genericAbort(USR_UNHANDLED_MESSAGE, `${randomness.length}`)
   
-  const random = 0
+  //const random = randomness[0]
+  
   const winner: u64 = state.participants[0]
 
   // send all the money to winner
